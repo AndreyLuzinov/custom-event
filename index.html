@@ -2,12 +2,21 @@
 <html>
   <head>
     <title>Test Custom Event</title>
+	<script>
+      window.addEventListener("navigateURL", function(e) { 
+		alert(JSON.stringify(e.detail)); 
+	  });
+	  
+	  function handleClick() {
+		window.dispatchEvent(new CustomEvent("navigateURL", {
+			detail: {
+				url: '/page',
+			}
+		}));
+	  }
+    </script>
   </head>
   <body>
-    <script>
-      window.addEventListener("navigateURL", function(e) { 
-		alert(e.detail); 
-	  });
-    </script>
+	<button onclick="handleClick()" >Open Page</button>
   </body>
 </html>
